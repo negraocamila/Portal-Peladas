@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout" >
+
+<head>
+    <title>Portal Pelada - Login</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style/styleCss.css"/>
+
+</head>
+
+<body>
+	
+	<header>
+		<nav class="menu">
+		    <div class="nav-wrapper">
+		      <a href="#" class="brand-logo">Portal Peladas</a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>     
+		      
+		    </div>
+		</nav>
+	
+	</header>
+
+<body>
+	
+	
+		<div class="container formConvidado cadastro">
+           
+                <div class="row">
+                    <h2>Cadastro de Usuario</h2>
+                    <p>Crie seu usuario no sistema</p>
+                
+                
+                
+                <form method="post" th:object="${usuario}" action="salvarUsuario">
+                    
+                    <input type="text" th:field="*{nomeCompleto}"   placeholder="Nome completo">
+                    <input type="text" th:field="*{apelido}" placeholder="Apelido">
+                    <input type="email" th:field="*{email}" placeholder="Email">
+                    <input type="password" th:field="*{senha}" placeholder="Senha">
+                                      
+                  
+                 	<div class="meubotao">
+                    <button type="submit" class="waves-effect waves-light btn">Cadastrar</button>
+                    </div>
+                </form>
+            
+ 				</div>  
+       
+		</div>
+			
+
+
+	
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+
+</html>

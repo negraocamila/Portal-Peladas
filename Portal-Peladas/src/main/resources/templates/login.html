@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout" >
+
+<head>
+    <title>Portal Pelada - Login</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style/styleCss.css"/>
+
+</head>
+
+<body>
+	
+	<header>
+		<nav class="menu">
+		    <div class="nav-wrapper">
+		      <a href="#" class="brand-logo">Portal Peladas</a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>     
+		      
+		    </div>
+		</nav>
+	
+	</header>
+
+<body>
+	
+	
+		<div class="container formConvidado cadastro">
+           
+                <div class="row">
+                    <h2>Login</h2>
+                    <p>Insira seus dados para efetuar login no sistema</p>
+                
+                
+                <form  th:object="${usuario}" action="/login" method="post">
+                	
+                	<div th:if="${msg}" >
+                	<strong th:text="${msg}"></strong>
+                	</div>
+                
+                    	<input type="text"name="username" class="form-control" placeholder="Apelido">
+                   		<input type="password" name="password" class="form-control" placeholder="Senha">
+                                      
+                  <a th:href="@{/cadastro}">Criar cadastro</a>
+                 	<div class="meubotao">
+                    <button  type="submit" class="waves-effect waves-light btn">Login</button>
+                    </div>
+                </form>
+            
+ 				</div>  
+       
+		</div>
+			
+
+
+	
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+
+</html>

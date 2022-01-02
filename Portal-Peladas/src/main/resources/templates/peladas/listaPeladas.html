@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout" >
+
+<head>
+    <title>Portal Pelada</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style/styleCss.css"/>
+
+</head>
+
+<body>
+
+<header>
+<nav>
+    <div class="nav-wrapper menu">
+      <a href="#" class="brand-logo">Lista de Peladas</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/cadastrarPelada" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Pelada</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+
+<th:block th:include="mensagemValidacao"></th:block>
+
+<table class="container">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Local</th>
+            <th>Apagar</th>
+        </tr>
+    </thead>
+    <tbody>
+
+	<tr th:each="peladas : ${peladas}">
+        <td><a th:href="${(#mvc.url('PC#detalhesPeladas').arg(0, peladas.id)).build()}"><span th:text="${peladas.nome}"></span></a></td>
+        <td><span th:text="${peladas.data}"></span></td>
+        <td><span th:text="${peladas.hora}"></span></td>
+        <td><span th:text="${peladas.local}"></span></td>
+        <td><a th:href="${(#mvc.url('PC#deletarPelada').arg(0, peladas.id)).build()}"><i class="material-icons left">delete</i></a></td>
+	</tr>
+    </tbody>
+
+
+</table>
+
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+
+</html>

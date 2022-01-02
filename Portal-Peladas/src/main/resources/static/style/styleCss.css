@@ -1,0 +1,46 @@
+.detalhesPeladas{
+	box-shadow: 0px 0px 5px grey;
+	padding-top: 20px;
+	padding-left: 20px;
+	margin-bottom: 60px;
+
+}
+
+.formConvidado{
+	box-shadow: 0px 0px 5px grey;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+	margin-bottom: 60px;
+}
+
+.tabelaConvidado{
+	width: 50%;
+}
+
+.formPeladas{
+	box-shadow: 0px 0px 5px grey;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+	margin-bottom: 60px;
+}
+
+.menu{
+	background-color: #3399ff;
+}
+
+.login{
+	width: 30%;
+}
+
+.cadastro{
+    width:40%
+}
+
+.meubotao{
+   padding-top: 20px;
+   padding-bottom: 10px;
+   margin-bottom: 60px;
+
+}

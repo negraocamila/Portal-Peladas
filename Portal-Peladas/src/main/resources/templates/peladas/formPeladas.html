@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+    <title>Cadastrar Pelada</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style/styleCss.css"/>
+    
+</head>
+
+<body>
+   
+<header>
+<nav>
+    <div class="nav-wrapper menu">
+      <a href="#" class="brand-logo">Cadastrar Pelada</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/peladas" class="waves-effect waves-light btn"><i class="material-icons left">dehaze</i>Lista de Peladas</a></li>
+        </ul>
+    </div>
+  </nav>
+</header>
+    
+    <th:block th:include="mensagemValidacao"></th:block>
+    <div class="formPeladas">
+    <form class="container"	 method="post">
+       Nome: <input type="text" value="" name="nome"/>
+     <div class="row">
+       	<div class="input-field col s3">
+     		  Data: <input type="date" value="" name="data"/>
+       	</div>
+       <div class="input-field col s3">
+       		Hora: <input type="time" value="" name="hora"/>
+       </div>
+       <div class="input-field col s6">	
+       		Local: <input type="text" value="" name="local"/>
+       </div>
+     
+    </div>
+       <button class="waves-effect waves-light btn" type="submit">Salvar</button>
+   
+    </form>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>
