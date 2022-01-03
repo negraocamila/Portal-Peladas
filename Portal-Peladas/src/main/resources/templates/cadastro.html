@@ -35,9 +35,9 @@
                 
                 
                 
-                <form method="post" th:object="${usuario}" action="salvarUsuario">
+                <form autocomplete="off" th:action="@{/cadastro}" th:object="${usuario}" method="post" role="form">
                     
-                    <input type="text" th:field="*{nomeCompleto}"   placeholder="Nome completo">
+                    <input type="text" th:field="*{nomeCompleto}" placeholder="Nome completo">
                     <input type="text" th:field="*{apelido}" placeholder="Apelido">
                     <input type="email" th:field="*{email}" placeholder="Email">
                     <input type="password" th:field="*{senha}" placeholder="Senha">
@@ -45,9 +45,18 @@
                   
                  	<div class="meubotao">
                     <button type="submit" class="waves-effect waves-light btn">Cadastrar</button>
+                    <a th:href="@{/login}">Login</a>
                     </div>
+                    <span th:utext="${successMessage}"></span>
+              <div th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-hidden="true">×</button>
+					<ul th:each="data : ${bindingResult.getAllErrors()}">
+						<li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+					</ul>
+				</div>
                 </form>
-            
+            	
  				</div>  
        
 		</div>

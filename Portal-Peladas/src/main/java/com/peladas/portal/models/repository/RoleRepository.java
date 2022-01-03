@@ -3,13 +3,12 @@ package com.peladas.portal.models.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.peladas.portal.models.Usuario;
+import com.peladas.portal.models.Role;
 
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+public interface RoleRepository extends JpaRepository<Role,Integer>{
 
-	public Usuario findByEmail(String email);
-	
+	public Role findByRole(String role);
 	
 }

@@ -1,13 +1,16 @@
 package com.peladas.portal.exceptions;
 
-public class CriptoExistsException extends Exception {
-		
-	public CriptoExistsException(String message) {
-		super(message);
-		 //TODO Auto-generated constructor stub
-	}
-	
-	private static final long serialVersionUID = 1L;	
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-	
+@Configuration
+public class CriptoExistsException implements WebMvcConfigurer {
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+		return bCryptPasswordEncoder;
+	}
+		
 }

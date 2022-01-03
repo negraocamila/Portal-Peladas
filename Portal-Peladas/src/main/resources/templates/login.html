@@ -34,19 +34,20 @@
                     <p>Insira seus dados para efetuar login no sistema</p>
                 
                 
-                <form  th:object="${usuario}" action="/login" method="post">
-                	
-                	<div th:if="${msg}" >
-                	<strong th:text="${msg}"></strong>
-                	</div>
-                
-                    	<input type="text"name="username" class="form-control" placeholder="Apelido">
+                <form  th:action="@{/login}" method="POST">
+                	              	               
+                    	<input type="text"name="email" class="form-control" placeholder="Email">
                    		<input type="password" name="password" class="form-control" placeholder="Senha">
-                                      
-                  <a th:href="@{/cadastro}">Criar cadastro</a>
-                 	<div class="meubotao">
-                    <button  type="submit" class="waves-effect waves-light btn">Login</button>
-                    </div>
+                   		<div align="center" th:if="${param.error}">
+						<p style="font-size: 20; color: #FF1C19;">Email ou senha invalido.</p>
+						</div>
+                    
+                  <div class="meubotao">
+                    <button name="Submit" value="Login" type="Submit" th:text="Login" class="waves-effect waves-light btn">Login</button>
+                    	<a th:href="@{/cadastro}">Criar cadastro</a>
+                     </div>           
+                  	
+                 	
                 </form>
             
  				</div>  

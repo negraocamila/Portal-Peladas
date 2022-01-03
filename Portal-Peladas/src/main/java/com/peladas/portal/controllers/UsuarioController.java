@@ -1,86 +1,68 @@
 package com.peladas.portal.controllers;
 
-import java.security.NoSuchAlgorithmException;
-
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+
+
 import com.peladas.portal.models.Usuario;
-import com.peladas.portal.models.repository.UsuarioRepository;
-import com.peladas.portal.service.ServiceExc;
-import com.peladas.portal.service.ServiceUsuario;
-import com.peladas.portal.util.Util;
+import com.peladas.portal.service.UsuarioService;
 
 
 @Controller
 public class UsuarioController {
+	
+	@Autowired
+	UsuarioService us;
 
-	@Autowired
-	private UsuarioRepository ur;
-	
-	@Autowired
-	private ServiceUsuario su;
-	
-			
-	
-	@GetMapping("/login")
+	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public ModelAndView login() {
-	ModelAndView mv= new ModelAndView();
-	mv.setViewName("/login");
-	return mv;
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("login"); // resources/template/login.html
+		return modelAndView;
 	}
-	
-	@GetMapping("/index")
-	public ModelAndView index() {
-		ModelAndView mv= new ModelAndView();
-		mv.setViewName("/index");
-		return mv;
-	}
-	
-	
-	
-	
-	@GetMapping("/cadastro")
+
+	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
 	public ModelAndView cadastro() {
-		ModelAndView mv= new ModelAndView();
-		mv.addObject("usuario", new Usuario());
-		mv.setViewName("/cadastro");
-		return mv;
+		ModelAndView modelAndView = new ModelAndView();
+		 Usuario usuario = new Usuario();
+		 modelAndView.addObject("usuario", usuario); 
+		modelAndView.setViewName("cadastro"); 
+		return modelAndView;
 	}
 	
-	@PostMapping("salvarUsuario")
-	public ModelAndView cadastro(Usuario usuario) {
-		ModelAndView mv= new ModelAndView();
-		ur.save(usuario);
-		mv.setViewName("redirect:/login");
-		return mv;
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public ModelAndView index() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index"); 
+		return modelAndView;
 	}
 	
-	@PostMapping("/login")
-	public ModelAndView login(@Valid Usuario usuario, BindingResult br, HttpSession session) throws NoSuchAlgorithmException, ServiceExc{
-		ModelAndView mv= new ModelAndView();
-		mv.addObject("usuario", new Usuario());
-		if(br.hasErrors()) {
-			mv.setViewName("/login");
-		}
 		
-		Usuario userLogin = su.loginUser(usuario.getApelido(), Util.md5(usuario.getSenha()));
-			if(userLogin == null) {
-				mv.addObject("msg", "Usuario nao encontrado. Tente novamente");
-			}else {
-				session.setAttribute("usuarioLogado", userLogin);
-				return index();
-			}
-			
-			return mv;
+	@RequestMapping(value="/cadastro", method=RequestMethod.POST)
+	public ModelAndView registerUser(@Valid Usuario usuario, BindingResult bindingResult, ModelMap modelMap) {
+		ModelAndView modelAndView = new ModelAndView();
+			if(bindingResult.hasErrors()) {
+			modelAndView.addObject("successMessage", "Por favor corrija os campos!");
+			modelMap.addAttribute("bindingResult", bindingResult);
+		}
+		else if(us.isUserAlreadyPresent(usuario)){
+			modelAndView.addObject("successMessage", "Usuario ja existe!");			
+		}
+		else {
+			us.saveUsuario(usuario);
+			modelAndView.addObject("successMessage", "Usuario cadastrado com sucesso!");
+		}
+		modelAndView.addObject("usuario", new Usuario());
+		modelAndView.setViewName("cadastro");
+		return modelAndView;
 	}
-	
-	
 	
 }
