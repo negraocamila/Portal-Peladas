@@ -1,4 +1,4 @@
-package com.peladas.portal.models.repository;
+package com.peladas.portal.repository;
 
 import org.springframework.data.repository.CrudRepository;
 

@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.peladas.portal.models.Role;
 import com.peladas.portal.models.Usuario;
-import com.peladas.portal.models.repository.RoleRepository;
-import com.peladas.portal.models.repository.UsuarioRepository;
+import com.peladas.portal.repository.RoleRepository;
+import com.peladas.portal.repository.UsuarioRepository;
 
 @Service
 public class UsuarioServiceImp implements UsuarioService {

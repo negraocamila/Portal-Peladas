@@ -15,8 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.peladas.portal.models.Convidado;
 import com.peladas.portal.models.Peladas;
-import com.peladas.portal.models.repository.ConvidadoRepository;
-import com.peladas.portal.models.repository.PeladasRepository;
+import com.peladas.portal.repository.ConvidadoRepository;
+import com.peladas.portal.repository.PeladasRepository;
 
 
 
